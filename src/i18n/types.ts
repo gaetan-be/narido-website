@@ -94,7 +94,6 @@ export interface SiteCopy {
     linkedin: string;
     detailsTitle: string;
     company: string;
-    owner: string;
     country: string;
     countryLabel: string;
     vatLabel: string;

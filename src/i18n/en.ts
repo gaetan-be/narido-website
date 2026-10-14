@@ -183,7 +183,6 @@ export const en: SiteCopy = {
     linkedin: 'LinkedIn',
     detailsTitle: 'Company',
     company: 'Narido',
-    owner: 'Gaëtan Denaisse',
     country: 'Belgium',
     countryLabel: 'Country',
     vatLabel: 'VAT',
@@ -195,7 +194,7 @@ export const en: SiteCopy = {
   },
   footer: {
     positioning: 'Tech lead, from payments to AI.',
-    rights: 'Gaëtan Denaisse',
+    rights: 'Narido',
   },
   notFound: {
     title: 'Page not found',

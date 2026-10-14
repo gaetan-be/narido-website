@@ -26,11 +26,7 @@ const jsonLd = {
   email: copy.contact.email,
   image: ogImage.href,
   description,
-  founder: {
-    "@type": "Person",
-    name: copy.contact.owner,
-    sameAs: [copy.contact.linkedinUrl],
-  },
+  vatID: copy.contact.vat,
   address: {
     "@type": "PostalAddress",
     addressCountry: "BE",
@@ -46,7 +42,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="author" content={copy.contact.owner} />
+    <meta name="author" content={copy.contact.company} />
     <meta name="theme-color" content="#FBF4EA" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="en" href="https://narido.eu/" />
