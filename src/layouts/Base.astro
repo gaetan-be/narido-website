@@ -1,0 +1,85 @@
+---
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import "@fontsource/inter/latin-600.css";
+import "@fontsource/space-grotesk/latin-500.css";
+import "@fontsource/space-grotesk/latin-600.css";
+import "../styles/global.css";
+import type { SiteCopy } from "../i18n";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  copy: SiteCopy;
+  title?: string;
+  description?: string;
+}
+
+const { copy, title = copy.meta.title, description = copy.meta.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("og.png", Astro.site);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Narido",
+  url: "https://narido.eu",
+  email: copy.contact.email,
+  image: ogImage.href,
+  description,
+  founder: {
+    "@type": "Person",
+    name: copy.contact.owner,
+    sameAs: [copy.contact.linkedinUrl],
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "BE",
+  },
+  areaServed: "BE",
+};
+---
+
+<!doctype html>
+<html lang={copy.meta.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={copy.contact.owner} />
+    <meta name="theme-color" content="#FBF4EA" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href="https://narido.eu/" />
+    <link rel="alternate" hreflang="x-default" href="https://narido.eu/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={copy.meta.ogAlt} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{copy.nav.skip}</a>
+    <Header copy={copy} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer copy={copy} />
+    <script>
+      import "../scripts/reveal.ts";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+---
+import type { SiteCopy } from "../i18n";
+
+interface Props {
+  copy: SiteCopy;
+}
+
+const { copy } = Astro.props;
+const contact = copy.contact;
+---
+
+<section id="contact" class="scroll-mt-28 py-20 sm:py-28" aria-labelledby="contact-title">
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <h2 id="contact-title" class="text-4xl font-medium sm:text-5xl">{contact.title}</h2>
+      <p class="mt-4 text-lg text-pretty text-ink-soft">{contact.intro}</p>
+    </div>
+
+    <div class="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+      <form
+        class="grid gap-4 rounded-[1.6rem] bg-paper p-6 shadow-[inset_0_0_0_1px_rgba(30,27,75,0.08)] sm:p-8"
+        action={`mailto:${contact.email}`}
+        method="post"
+        enctype="text/plain"
+        data-email={contact.email}
+        data-subject={contact.subjectPrefix}
+        data-sent={contact.sent}
+        data-reveal
+      >
+        <label class="field">
+          <span>{contact.name}</span>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="120" />
+        </label>
+        <label class="field">
+          <span>{contact.emailLabel}</span>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="200" />
+        </label>
+        <label class="field">
+          <span>{contact.need}</span>
+          <select id="contact-need" name="need" required>
+            <option value="" selected disabled>{contact.needPlaceholder}</option>
+            {contact.needs.map((option) => <option value={option.value}>{option.label}</option>)}
+          </select>
+        </label>
+        <label class="field">
+          <span>{contact.message}</span>
+          <textarea id="contact-message" name="message" required maxlength="4000"></textarea>
+        </label>
+        <p class="text-sm text-ink-soft">{contact.hint}</p>
+        <div>
+          <button class="btn btn-primary" type="submit">{contact.submit}</button>
+        </div>
+        <p id="contact-status" class="min-h-6 text-sm" role="status"></p>
+      </form>
+
+      <div class="grid gap-8" data-reveal style="--d:80ms">
+        <div>
+          <p class="text-sm font-semibold">{contact.direct}</p>
+          <a class="mt-2 inline-block text-2xl font-medium underline decoration-coral decoration-2 underline-offset-4" href={`mailto:${contact.email}`}>
+            {contact.email}
+          </a>
+          <p class="mt-4">
+            <a
+              class="font-medium underline decoration-teal decoration-2 underline-offset-4"
+              href={contact.linkedinUrl}
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              {contact.linkedin}
+              <span class="sr-only">({copy.work.newTab})</span>
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-medium">{contact.detailsTitle}</h3>
+          <dl class="mt-3 grid gap-2 text-ink-soft">
+            <div>
+              <dt class="sr-only">{contact.name}</dt>
+              <dd class="text-ink">{contact.owner}</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt>{contact.countryLabel}</dt>
+              <dd>{contact.country}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <aside class="rounded-[1.25rem] border border-dashed border-ink/35 bg-white/40 p-5">
+          <p class="text-xs font-semibold tracking-wide uppercase text-ink-soft">{contact.placeholderLabel}</p>
+          <dl class="mt-3 grid gap-3">
+            <div>
+              <dt class="text-sm font-semibold">{contact.vatLabel}</dt>
+              <dd>{contact.vatTodo}</dd>
+            </div>
+            <div>
+              <dt class="text-sm font-semibold">{contact.addressLabel}</dt>
+              <dd>{contact.addressTodo}</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact form");
+  const status = document.querySelector<HTMLElement>("#contact-status");
+  if (form && status && form.dataset.bound !== "true") {
+    form.dataset.bound = "true";
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const name = String(data.get("name") ?? "").trim();
+      const email = String(data.get("email") ?? "").trim();
+      const need = String(data.get("need") ?? "").trim();
+      const message = String(data.get("message") ?? "").trim();
+      const to = form.dataset.email ?? "hello@narido.eu";
+      const subject = `${form.dataset.subject ?? "Message for Narido from"} ${name}`;
+      const body = [`Name: ${name}`, `Email: ${email}`, `Need: ${need}`, "", message].join("\n");
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = form.dataset.sent ?? "";
+    });
+  }
+</script>

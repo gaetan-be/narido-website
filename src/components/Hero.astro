@@ -1,0 +1,104 @@
+---
+import type { SiteCopy } from "../i18n";
+
+interface Props {
+  copy: SiteCopy;
+}
+
+const { copy } = Astro.props;
+---
+
+<section id="top" class="hero-pin">
+  <div
+    class="hero-sticky mx-auto grid w-full max-w-6xl items-center gap-8 px-5 pt-28 pb-14 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-6 lg:pt-24"
+  >
+    <div>
+      <p class="text-sm font-semibold tracking-wide text-ink-soft">{copy.hero.eyebrow}</p>
+      <h1
+        id="hero-title"
+        class="mt-4 text-[clamp(2.45rem,6vw,5.15rem)] font-medium text-balance"
+      >
+        {copy.hero.titleLead}<br />
+        {copy.hero.titleTail}
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-ink-soft">{copy.hero.lede}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn btn-primary" href="/#contact">{copy.hero.primary}</a>
+        <a class="btn btn-secondary" href="/#work">{copy.hero.secondary}</a>
+      </div>
+    </div>
+    <div
+      class="relative mx-auto aspect-square w-full max-w-[26rem] lg:max-w-[34rem]"
+      data-hero-visual
+      aria-hidden="true"
+    >
+      <img
+        data-hero-fallback
+        class="absolute inset-0 z-10 h-full w-full"
+        src="/hero-fallback.svg"
+        alt=""
+        width="640"
+        height="640"
+        decoding="async"
+      />
+      <canvas data-hero-canvas class="absolute inset-0 h-full w-full" width="800" height="800" hidden></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { shouldUseStaticHero } from "../scripts/hero-gate";
+
+  const section = document.querySelector<HTMLElement>("#top");
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-hero-canvas]");
+  const fallback = document.querySelector<HTMLElement>("[data-hero-fallback]");
+
+  let stopHero: (() => void) | null = null;
+  let generation = 0;
+
+  function showFallback() {
+    stopHero?.();
+    stopHero = null;
+    if (canvas) canvas.hidden = true;
+    if (fallback) fallback.hidden = false;
+    section?.classList.add("hero-static");
+  }
+
+  async function apply() {
+    const token = ++generation;
+    if (!section || !canvas || !fallback) return;
+    if (shouldUseStaticHero()) {
+      showFallback();
+      return;
+    }
+
+    canvas.hidden = false;
+    const { mountHero } = await import("../scripts/hero-scene");
+    if (token !== generation) return;
+
+    stopHero?.();
+    const stop = mountHero(canvas, section, () => {
+      if (token === generation) showFallback();
+    });
+    if (!stop || token !== generation) {
+      stop?.();
+      showFallback();
+      return;
+    }
+
+    section.classList.remove("hero-static");
+    fallback.hidden = true;
+    stopHero = stop;
+  }
+
+  void apply();
+
+  for (const query of [
+    window.matchMedia("(max-width: 1023px)"),
+    window.matchMedia("(prefers-reduced-motion: reduce)"),
+  ]) {
+    query.addEventListener("change", () => {
+      void apply();
+    });
+  }
+</script>

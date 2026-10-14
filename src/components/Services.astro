@@ -1,0 +1,47 @@
+---
+import type { Accent, SiteCopy } from "../i18n";
+
+interface Props {
+  copy: SiteCopy;
+}
+
+const { copy } = Astro.props;
+
+const badge: Record<Accent, string> = {
+  coral: "bg-coral text-ink",
+  sunflower: "bg-sunflower text-ink",
+  teal: "bg-teal text-ink",
+  ink: "bg-ink text-cream",
+};
+---
+
+<section id="services" class="scroll-mt-28 bg-band py-20 sm:py-28" aria-labelledby="services-title">
+  <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <h2 id="services-title" class="text-4xl font-medium sm:text-5xl">{copy.services.title}</h2>
+      <p class="mt-4 text-lg text-pretty text-ink-soft">{copy.services.intro}</p>
+    </div>
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2">
+      {
+        copy.services.items.map((item, index) => (
+          <li
+            class="h-full rounded-[1.6rem] bg-paper p-7 shadow-[inset_0_0_0_1px_rgba(30,27,75,0.08)]"
+            data-reveal
+            style={`--d:${index * 70}ms`}
+          >
+            <p
+              class:list={[
+                "inline-flex h-12 min-w-12 items-center justify-center rounded-2xl px-3 font-display text-lg font-medium",
+                badge[item.accent],
+              ]}
+            >
+              {item.index}
+            </p>
+            <h3 class="mt-5 text-2xl font-medium">{item.title}</h3>
+            <p class="mt-3 text-pretty text-ink-soft">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

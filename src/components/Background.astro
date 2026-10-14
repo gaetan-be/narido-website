@@ -1,0 +1,40 @@
+---
+import type { SiteCopy } from "../i18n";
+
+interface Props {
+  copy: SiteCopy;
+}
+
+const { copy } = Astro.props;
+
+const dot: Record<string, string> = {
+  coral: "#ff6b4a",
+  sunflower: "#ffc93c",
+  teal: "#14b8a6",
+  ink: "#1e1b4b",
+};
+---
+
+<section
+  id="background"
+  class="scroll-mt-28 bg-band py-20 sm:py-28"
+  aria-labelledby="background-title"
+  style="--timeline-ring: #f3eadf"
+>
+  <div class="mx-auto grid w-full max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+    <div data-reveal>
+      <h2 id="background-title" class="text-4xl font-medium sm:text-5xl">{copy.background.title}</h2>
+      <p class="mt-4 max-w-md text-lg text-pretty text-ink-soft">{copy.background.intro}</p>
+    </div>
+    <ol class="timeline">
+      {
+        copy.background.eras.map((era, index) => (
+          <li data-reveal style={`--d:${index * 50}ms; --dot:${dot[era.accent]}`}>
+            <h3 class="text-2xl font-medium">{era.title}</h3>
+            <p class="mt-2 max-w-xl text-pretty text-ink-soft">{era.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
