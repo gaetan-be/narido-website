@@ -7,7 +7,7 @@ const { class: className = "h-9 w-9" } = Astro.props;
 ---
 
 <svg class={className} viewBox="0 0 64 64" aria-hidden="true">
-  <rect x="6" y="14" width="16" height="42" rx="8" fill="#FFC93C"></rect>
-  <rect x="42" y="14" width="16" height="42" rx="8" fill="#14B8A6"></rect>
-  <rect x="6" y="4" width="52" height="26" rx="9" fill="#FF6B4A"></rect>
+  <rect x="6" y="14" width="16" height="42" rx="8" fill="var(--block-b, #FFC93C)"></rect>
+  <rect x="42" y="14" width="16" height="42" rx="8" fill="var(--block-c, #14B8A6)"></rect>
+  <rect x="6" y="4" width="52" height="26" rx="9" fill="var(--block-a, #FF6B4A)"></rect>
 </svg>

@@ -33,15 +33,19 @@ const home = homePath(copy.meta.locale);
       data-hero-visual
       aria-hidden="true"
     >
-      <img
+      <svg
         data-hero-fallback
         class="absolute inset-0 z-10 h-full w-full"
-        src="/hero-fallback.svg"
-        alt=""
-        width="640"
-        height="640"
-        decoding="async"
-      />
+        viewBox="0 0 640 640"
+        aria-hidden="true"
+      >
+        <ellipse cx="320" cy="524" rx="168" ry="18" fill="var(--shadow-color, rgba(30, 27, 75, 0.16))"></ellipse>
+        <g transform="translate(83 86) scale(7.4)">
+          <rect x="6" y="14" width="16" height="42" rx="8" fill="var(--block-b, #FFC93C)"></rect>
+          <rect x="42" y="14" width="16" height="42" rx="8" fill="var(--block-c, #14B8A6)"></rect>
+          <rect x="6" y="4" width="52" height="26" rx="9" fill="var(--block-a, #FF6B4A)"></rect>
+        </g>
+      </svg>
       <canvas data-hero-canvas class="absolute inset-0 h-full w-full" width="800" height="800" hidden></canvas>
     </div>
   </div>

@@ -1,4 +1,14 @@
 @import "tailwindcss";
+@import "@fontsource/barlow-condensed/latin-700.css";
+@import "@fontsource/archivo/latin-400.css";
+@import "@fontsource/archivo/latin-700.css";
+@import "@fontsource/archivo/latin-800.css";
+@import "@fontsource/syne/latin-700.css";
+@import "@fontsource/syne/latin-800.css";
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+@import "./themes.css";
 
 @theme {
   --color-coral: #ff6b4a;
@@ -33,12 +43,12 @@
   }
 
   ::selection {
-    background: #ffc93c;
-    color: #1e1b4b;
+    background: var(--color-sunflower);
+    color: var(--on-accent, #1e1b4b);
   }
 
   :focus-visible {
-    outline: 2px solid #1e1b4b;
+    outline: 2px solid var(--color-ink);
     outline-offset: 3px;
   }
 
@@ -58,30 +68,30 @@
     justify-content: center;
     min-height: 3rem;
     padding: 0.7rem 1.2rem;
-    border-radius: 999px;
+    border-radius: var(--radius-btn, 999px);
     font-weight: 600;
     letter-spacing: -0.01em;
     text-decoration: none;
   }
 
   .btn-primary {
-    background: #1e1b4b;
-    color: #fbf4ea;
+    background: var(--btn-bg, #1e1b4b);
+    color: var(--btn-fg, #fbf4ea);
   }
 
   .btn-primary:hover {
-    background: #31286a;
+    background: var(--btn-bg-hover, #31286a);
   }
 
   .btn-secondary {
     background: transparent;
-    color: #1e1b4b;
-    box-shadow: inset 0 0 0 1.5px #1e1b4b;
+    color: var(--btn-bg, #1e1b4b);
+    box-shadow: inset 0 0 0 1.5px var(--btn-bg, #1e1b4b);
   }
 
   .btn-secondary:hover {
-    background: #1e1b4b;
-    color: #fbf4ea;
+    background: var(--btn-bg, #1e1b4b);
+    color: var(--btn-fg, #fbf4ea);
   }
 
   .field {
@@ -98,10 +108,10 @@
   .field select,
   .field textarea {
     width: 100%;
-    border-radius: 0.9rem;
-    border: 1px solid rgba(30, 27, 75, 0.16);
-    background: #fffaf3;
-    color: #1e1b4b;
+    border-radius: var(--radius-field, 0.9rem);
+    border: 1px solid var(--field-border, rgba(30, 27, 75, 0.16));
+    background: var(--color-paper);
+    color: var(--color-ink);
     padding: 0.8rem 0.9rem;
     font: inherit;
     font-size: 1rem;
@@ -113,13 +123,17 @@
   }
 }
 
+.text-on-accent {
+  color: var(--on-accent, #1e1b4b);
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
   top: -5rem;
   z-index: 80;
-  background: #1e1b4b;
-  color: #fbf4ea;
+  background: var(--btn-bg, #1e1b4b);
+  color: var(--btn-fg, #fbf4ea);
   padding: 0.6rem 0.9rem;
   border-radius: 0.6rem;
 }
@@ -128,11 +142,17 @@
   top: 0.8rem;
 }
 
+header:has(.header-bar.is-stuck),
+header:has(#site-menu:not([hidden])),
 .header-bar.is-stuck,
 .header-bar:has(#site-menu:not([hidden])) {
-  background: rgba(251, 244, 234, 0.94);
-  border-bottom: 1px solid rgba(30, 27, 75, 0.1);
+  background: var(--header-bg, rgba(251, 244, 234, 0.94));
+  border-bottom: 1px solid var(--header-line, rgba(30, 27, 75, 0.1));
   backdrop-filter: blur(12px);
+}
+
+.hero-pin .hero-sticky {
+  padding-top: 9rem;
 }
 
 .menu-panel:not([hidden]) {
@@ -205,24 +225,24 @@
 }
 
 .lang-switch a {
-  color: #3d3a63;
+  color: var(--color-ink-soft);
 }
 
 .lang-switch a[aria-current="page"] {
-  color: #1e1b4b;
+  color: var(--color-ink);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
 }
 
 .lang-switch a:hover {
-  color: #1e1b4b;
+  color: var(--color-ink);
 }
 
 [data-nav][aria-current="location"] {
-  color: #1e1b4b;
+  color: var(--color-ink);
   text-decoration: underline;
-  text-decoration-color: #ff6b4a;
+  text-decoration-color: var(--color-coral);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.35rem;
 }
@@ -276,7 +296,7 @@
 .timeline li {
   position: relative;
   padding: 0 0 2.1rem 1.8rem;
-  border-left: 1px solid rgba(30, 27, 75, 0.16);
+  border-left: 1px solid var(--line, rgba(30, 27, 75, 0.16));
 }
 
 .timeline li:last-child {
@@ -292,8 +312,8 @@
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 999px;
-  background: var(--dot, #ff6b4a);
-  box-shadow: 0 0 0 4px var(--timeline-ring, #f3eadf);
+  background: var(--dot, var(--color-coral));
+  box-shadow: 0 0 0 4px var(--timeline-ring, var(--color-band));
 }
 
 .js [data-reveal] {

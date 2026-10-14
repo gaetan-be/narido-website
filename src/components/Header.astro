@@ -22,6 +22,13 @@ const links = [
     <span class="flex-1 bg-sunflower"></span>
     <span class="flex-1 bg-teal"></span>
   </div>
+  <nav class="theme-bar" aria-label="Visual themes">
+    <span>Themes</span>
+    <a href={home} data-theme-link="">Current</a>
+    <a href={`${home}?theme=electric`} data-theme-link="electric">Electric</a>
+    <a href={`${home}?theme=swiss`} data-theme-link="swiss">Swiss</a>
+    <a href={`${home}?theme=glow`} data-theme-link="glow">Glow</a>
+  </nav>
   <div class="header-bar" data-header-bar>
     <div class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
       <a href={`${home}#top`} class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
@@ -111,7 +118,8 @@ const links = [
       const hash = window.location.hash;
       if (!hash) return;
       const url = new URL(link.href);
-      link.href = `${url.pathname}${hash}`;
+      const theme = new URLSearchParams(window.location.search).get("theme");
+      link.href = `${url.pathname}${theme ? `?theme=${theme}` : ""}${hash}`;
     });
   });
 

@@ -43,6 +43,40 @@ const jsonLd = {
 <!doctype html>
 <html lang={copy.meta.lang}>
   <head>
+    <script is:inline>
+      (function () {
+        var theme = new URLSearchParams(location.search).get("theme");
+        if (theme === "electric" || theme === "swiss" || theme === "glow") {
+          document.documentElement.dataset.theme = theme;
+        }
+        document.addEventListener("click", function (event) {
+          var target = event.target;
+          if (!target || !target.closest) return;
+          var link = target.closest("a[href]");
+          if (!link) return;
+          var url;
+          try {
+            url = new URL(link.href, location.href);
+          } catch (error) {
+            return;
+          }
+          if (url.origin !== location.origin) return;
+          if (link.hasAttribute("data-theme-link")) {
+            var id = link.getAttribute("data-theme-link") || "";
+            if (id) url.searchParams.set("theme", id);
+            else url.searchParams.delete("theme");
+            if (location.hash && !url.hash) url.hash = location.hash;
+            link.href = url.pathname + url.search + url.hash;
+            return;
+          }
+          var current = document.documentElement.dataset.theme;
+          if (current && !url.searchParams.has("theme")) {
+            url.searchParams.set("theme", current);
+            link.href = url.pathname + url.search + url.hash;
+          }
+        });
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>

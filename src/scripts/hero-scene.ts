@@ -64,6 +64,22 @@ const BLOCKS: BlockSpec[] = [
   },
 ];
 
+function cssHex(name: string, fallback: number): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  if (!raw) return fallback;
+  try {
+    return new Color(raw).getHex();
+  } catch {
+    return fallback;
+  }
+}
+
+function cssNumber(name: string, fallback: number): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
+}
+
 function easeOutBack(t: number): number {
   const c1 = 1.70158;
   const c3 = c1 + 1;
@@ -99,7 +115,7 @@ export function mountHero(
   camera.position.set(0, 0, 12);
   camera.lookAt(0, 0, 0);
 
-  scene.add(new HemisphereLight(0xfff8ef, 0xd9d0c3, 1.15));
+  scene.add(new HemisphereLight(cssHex("--light-sky", 0xfff8ef), cssHex("--light-ground", 0xd9d0c3), 1.15));
   const key = new DirectionalLight(0xffffff, 1.7);
   key.position.set(3.4, 5.4, 6.2);
   scene.add(key);
@@ -113,13 +129,23 @@ export function mountHero(
   const meshes: Mesh[] = [];
   const geometries: RoundedBoxGeometry[] = [];
   const materials: MeshStandardMaterial[] = [];
+  const blockColors = [
+    cssHex("--block-a", CORAL),
+    cssHex("--block-b", SUNFLOWER),
+    cssHex("--block-c", TEAL),
+  ];
+  const emissive = cssNumber("--block-emissive", 0);
+  const roughness = cssNumber("--block-roughness", 0.46);
 
-  for (const spec of BLOCKS) {
+  for (const [index, spec] of BLOCKS.entries()) {
+    const color = blockColors[index] ?? spec.color;
     const geometry = new RoundedBoxGeometry(spec.size[0], spec.size[1], spec.size[2], 3, spec.radius);
     const material = new MeshStandardMaterial({
-      color: spec.color,
-      roughness: 0.46,
-      metalness: 0.02,
+      color,
+      roughness,
+      metalness: emissive > 0 ? 0.08 : 0.02,
+      emissive: color,
+      emissiveIntensity: emissive,
     });
     const mesh = new Mesh(geometry, material);
     group.add(mesh);
@@ -136,8 +162,9 @@ export function mountHero(
   let shadowMat: MeshBasicMaterial | null = null;
   if (shadowCtx) {
     const gradient = shadowCtx.createRadialGradient(64, 64, 10, 64, 64, 64);
-    gradient.addColorStop(0, "rgba(30, 27, 75, 0.16)");
-    gradient.addColorStop(1, "rgba(30, 27, 75, 0)");
+    const shadowTint = getComputedStyle(document.documentElement).getPropertyValue("--shadow-color").trim();
+    gradient.addColorStop(0, shadowTint || "rgba(30, 27, 75, 0.16)");
+    gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
     shadowCtx.fillStyle = gradient;
     shadowCtx.fillRect(0, 0, 128, 128);
     const texture = new CanvasTexture(shadowCanvas);
