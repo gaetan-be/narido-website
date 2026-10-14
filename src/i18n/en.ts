@@ -182,7 +182,7 @@ export const en: SiteCopy = {
     company: 'Narido SRL',
     vatLabel: 'VAT',
     vat: 'BE1010525808',
-    address: 'Ottignie-Louvain-la-Neuve - Belgium',
+    address: 'Ottignies-Louvain-la-Neuve - Belgium',
     addressLocality: 'Ottignies-Louvain-la-Neuve',
     email: 'hello@narido.eu',
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
