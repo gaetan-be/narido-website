@@ -7,7 +7,6 @@ interface Props {
 
 const { copy } = Astro.props;
 const contact = copy.contact;
-const showAddress = contact.address.trim() !== '' && !contact.address.trim().startsWith('TODO');
 ---
 
 <section id="contact" class="scroll-mt-28 py-20 sm:py-28" aria-labelledby="contact-title">
@@ -74,29 +73,10 @@ const showAddress = contact.address.trim() !== '' && !contact.address.trim().sta
         </div>
 
         <div>
-          <h3 class="text-xl font-medium">{contact.detailsTitle}</h3>
-          <dl class="mt-3 grid gap-2 text-ink-soft">
-            <div>
-              <dt class="sr-only">{contact.detailsTitle}</dt>
-              <dd class="text-ink">{contact.company}</dd>
-            </div>
-            <div class="flex gap-2">
-              <dt>{contact.countryLabel}</dt>
-              <dd>{contact.country}</dd>
-            </div>
-            <div class="flex gap-2">
-              <dt>{contact.vatLabel}</dt>
-              <dd class="text-ink">{contact.vat}</dd>
-            </div>
-            {
-              showAddress && (
-                <div class="flex gap-2">
-                  <dt>{contact.addressLabel}</dt>
-                  <dd>{contact.address}</dd>
-                </div>
-              )
-            }
-          </dl>
+          <h3 class="text-sm font-semibold">{contact.detailsTitle}</h3>
+          <p class="mt-3 text-ink">{contact.company}</p>
+          <p class="mt-2 text-ink-soft">{contact.address}</p>
+          <p class="mt-2 text-ink-soft">{contact.vatLabel} {contact.vat}</p>
         </div>
       </div>
     </div>

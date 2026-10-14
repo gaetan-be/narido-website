@@ -93,12 +93,10 @@ export interface SiteCopy {
     linkedin: string;
     detailsTitle: string;
     company: string;
-    country: string;
-    countryLabel: string;
     vatLabel: string;
     vat: string;
-    addressLabel: string;
     address: string;
+    addressLocality: string;
     email: string;
     linkedinUrl: string;
   };

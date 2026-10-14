@@ -22,6 +22,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Narido",
+  legalName: copy.contact.company,
   url: "https://narido.eu",
   email: copy.contact.email,
   image: ogImage.href,
@@ -29,6 +30,7 @@ const jsonLd = {
   vatID: copy.contact.vat,
   address: {
     "@type": "PostalAddress",
+    addressLocality: copy.contact.addressLocality,
     addressCountry: "BE",
   },
   areaServed: "BE",
