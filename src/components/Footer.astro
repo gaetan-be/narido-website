@@ -12,12 +12,12 @@ const home = homePath(copy.meta.locale);
 ---
 
 <footer class="border-t border-ink/10 py-10">
-  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
     <a href={`${home}#top`} class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
       <Logo class="h-8 w-8" />
       <span class="font-display text-lg font-semibold tracking-tight">Narido</span>
     </a>
-    <p class="text-sm text-ink-soft">{copy.footer.positioning}</p>
+    <p class="max-w-xl text-sm text-pretty text-ink-soft lg:max-w-md lg:text-right">{copy.footer.positioning}</p>
     <p class="text-sm text-ink-soft">© {year} {copy.footer.rights}</p>
   </div>
 </footer>

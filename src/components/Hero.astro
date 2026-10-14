@@ -10,39 +10,48 @@ const home = homePath(copy.meta.locale);
 ---
 
 <section id="top" class="hero-pin">
-  <div
-    class="hero-sticky mx-auto grid w-full max-w-6xl items-center gap-8 px-5 pt-28 pb-14 sm:px-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-6 lg:pt-24"
-  >
-    <div>
-      <p class="text-sm font-semibold tracking-wide text-ink-soft">{copy.hero.eyebrow}</p>
-      <h1
-        id="hero-title"
-        class="mt-4 text-[clamp(2.35rem,4.8vw,4.75rem)] font-medium text-balance"
-      >
-        {copy.hero.titleLead}<br />
-        {copy.hero.titleTail}
-      </h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-ink-soft">{copy.hero.lede}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn btn-primary" href={`${home}#contact`}>{copy.hero.primary}</a>
-        <a class="btn btn-secondary" href={`${home}#work`}>{copy.hero.secondary}</a>
+  <div class="hero-sticky mx-auto flex w-full max-w-6xl flex-col justify-center px-5 pt-28 pb-12 sm:px-8 lg:pt-24 lg:pb-10">
+    <p class="text-sm font-semibold tracking-wide text-ink-soft">{copy.hero.eyebrow}</p>
+    <h1 id="hero-title" class="mt-3 text-[clamp(1.7rem,8vw,2.15rem)] font-medium leading-[1.08] lg:text-[clamp(2.6rem,4.05vw,3.15rem)] lg:leading-[1.02]">
+      <span class="lg:hidden">
+        {
+          copy.hero.titleLinesCompact.map((line) => (
+            <span class="block">{line}</span>
+          ))
+        }
+      </span>
+      <span class="hidden lg:block">
+        {
+          copy.hero.titleLines.map((line) => (
+            <span class="block">{line}</span>
+          ))
+        }
+      </span>
+    </h1>
+    <div class="mt-8 grid items-center gap-8 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-8">
+      <div>
+        <p class="max-w-xl text-lg leading-relaxed text-pretty text-ink-soft">{copy.hero.lede}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn btn-primary" href={`${home}#contact`}>{copy.hero.primary}</a>
+          <a class="btn btn-secondary" href={`${home}#work`}>{copy.hero.secondary}</a>
+        </div>
       </div>
-    </div>
-    <div
-      class="hero-visual relative mx-auto aspect-square"
-      data-hero-visual
-      aria-hidden="true"
-    >
-      <img
-        data-hero-fallback
-        class="absolute inset-0 z-10 h-full w-full"
-        src="/hero-fallback.svg"
-        alt=""
-        width="640"
-        height="640"
-        decoding="async"
-      />
-      <canvas data-hero-canvas class="absolute inset-0 h-full w-full" width="800" height="800" hidden></canvas>
+      <div
+        class="hero-visual relative mx-auto aspect-square"
+        data-hero-visual
+        aria-hidden="true"
+      >
+        <img
+          data-hero-fallback
+          class="absolute inset-0 z-10 h-full w-full"
+          src="/hero-fallback.svg"
+          alt=""
+          width="640"
+          height="640"
+          decoding="async"
+        />
+        <canvas data-hero-canvas class="absolute inset-0 h-full w-full" width="800" height="800" hidden></canvas>
+      </div>
     </div>
   </div>
 </section>

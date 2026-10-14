@@ -57,8 +57,8 @@ export interface SiteCopy {
   };
   hero: {
     eyebrow: string;
-    titleLead: string;
-    titleTail: string;
+    titleLines: string[];
+    titleLinesCompact: string[];
     lede: string;
     primary: string;
     secondary: string;

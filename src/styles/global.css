@@ -242,13 +242,13 @@
 }
 
 .hero-visual {
-  width: min(100%, 26rem);
+  width: min(100%, 16rem);
   overflow: visible;
 }
 
 @media (min-width: 1024px) {
   .hero-visual {
-    width: min(100%, 32rem, calc(100svh - 11rem));
+    width: min(100%, 28rem, calc(100svh - 22rem));
   }
 }
 

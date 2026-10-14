@@ -4,10 +4,10 @@ export const nl: SiteCopy = {
   meta: {
     locale: 'nl',
     lang: 'nl-BE',
-    title: 'Narido: tech lead, van betalingen tot AI',
+    title: 'Narido: We bouwen serieuze software, en we zetten AI erin aan het werk.',
     description:
       'Narido is een IT-bedrijf in België. Technische leiding voor betalingen, cloud, DevOps, oplevering en AI. Meer dan 20 jaar, nog altijd hands-on.',
-    ogAlt: 'Narido. Tech lead, van betalingen tot AI. België.',
+    ogAlt: 'Narido. We bouwen serieuze software, en we zetten AI erin aan het werk. België.',
   },
   nav: {
     home: 'Narido, startpagina',
@@ -24,8 +24,8 @@ export const nl: SiteCopy = {
   },
   hero: {
     eyebrow: 'België',
-    titleLead: 'Tech lead,',
-    titleTail: 'van betalingen tot AI.',
+    titleLines: ['We bouwen serieuze software,', 'en we zetten AI erin aan het werk.'],
+    titleLinesCompact: ['We bouwen', 'serieuze software,', 'en we zetten AI', 'erin aan het werk.'],
     lede: 'Narido leidt het technische werk voor producten die moeten blijven draaien, van betalingsplatformen over de cloud tot de release. AI hoort daar intussen gewoon bij.',
     primary: 'Neem contact op',
     secondary: 'Bekijk het werk',
@@ -190,7 +190,7 @@ export const nl: SiteCopy = {
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
   footer: {
-    positioning: 'Tech lead, van betalingen tot AI.',
+    positioning: 'We bouwen serieuze software, en we zetten AI erin aan het werk.',
     rights: 'Narido',
   },
   notFound: {

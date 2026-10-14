@@ -4,10 +4,10 @@ export const fr: SiteCopy = {
   meta: {
     locale: 'fr',
     lang: 'fr-BE',
-    title: 'Narido : tech lead, des paiements à l’IA',
+    title: 'Narido : Nous développons des logiciels sérieux, et nous y mettons l’IA au travail.',
     description:
       'Narido est une société informatique en Belgique. Direction technique pour les paiements, le cloud, le DevOps, la livraison et l’IA. Plus de vingt ans, toujours dans le code.',
-    ogAlt: 'Narido. Tech lead, des paiements à l’IA. Belgique.',
+    ogAlt: 'Narido. Nous développons des logiciels sérieux, et nous y mettons l’IA au travail. Belgique.',
   },
   nav: {
     home: 'Narido, page d’accueil',
@@ -24,8 +24,8 @@ export const fr: SiteCopy = {
   },
   hero: {
     eyebrow: 'Belgique',
-    titleLead: 'Tech lead,',
-    titleTail: 'des paiements à l’IA.',
+    titleLines: ['Nous développons des logiciels sérieux,', 'et nous y mettons l’IA au travail.'],
+    titleLinesCompact: ['Nous développons', 'des logiciels sérieux,', 'et nous y mettons', 'l’IA au travail.'],
     lede: 'Narido mène le travail technique de produits qui doivent tenir la route, des plateformes de paiement au cloud, jusqu’à la mise en production. L’IA fait maintenant partie de ce même travail.',
     primary: 'Nous écrire',
     secondary: 'Voir les réalisations',
@@ -190,7 +190,7 @@ export const fr: SiteCopy = {
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
   footer: {
-    positioning: 'Tech lead, des paiements à l’IA.',
+    positioning: 'Nous développons des logiciels sérieux, et nous y mettons l’IA au travail.',
     rights: 'Narido',
   },
   notFound: {
