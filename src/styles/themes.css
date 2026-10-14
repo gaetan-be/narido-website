@@ -1,4 +1,85 @@
-/* Mockup themes. Switch with ?theme=electric | swiss | glow. The default look is unchanged. */
+/* Mockup themes. Switch with ?theme=warm | slate | sand, or the earlier electric | swiss | glow. The default look is unchanged. */
+
+html[data-theme="warm"] {
+  color-scheme: light;
+  --color-coral: #c4623e;
+  --color-sunflower: #e2b043;
+  --color-teal: #1a9a8a;
+  --color-ink: #2a2622;
+  --color-ink-soft: #5c564c;
+  --color-cream: #f3ebe0;
+  --color-band: #e9dfd2;
+  --color-paper: #fbf6ee;
+  --on-accent: #2a2622;
+  --btn-bg: #2a2622;
+  --btn-fg: #fbf6ee;
+  --btn-bg-hover: #433e38;
+  --header-bg: rgba(243, 235, 224, 0.94);
+  --header-line: rgba(42, 38, 34, 0.1);
+  --field-border: rgba(42, 38, 34, 0.16);
+  --line: rgba(42, 38, 34, 0.16);
+  --block-a: #c4623e;
+  --block-b: #e2b043;
+  --block-c: #1a9a8a;
+  --block-roughness: 0.48;
+  --light-sky: #fff6ea;
+  --light-ground: #e4d5c4;
+  --shadow-color: rgba(42, 38, 34, 0.14);
+}
+
+html[data-theme="slate"] {
+  color-scheme: light;
+  --color-coral: #ff6b4a;
+  --color-sunflower: #ffc93c;
+  --color-teal: #14b8a6;
+  --color-ink: #24303a;
+  --color-ink-soft: #5a6872;
+  --color-cream: #f4f6f8;
+  --color-band: #e7ebee;
+  --color-paper: #fbfcfd;
+  --on-accent: #24303a;
+  --btn-bg: #24303a;
+  --btn-fg: #f4f6f8;
+  --btn-bg-hover: #3a4854;
+  --header-bg: rgba(244, 246, 248, 0.94);
+  --header-line: rgba(36, 48, 58, 0.1);
+  --field-border: rgba(36, 48, 58, 0.16);
+  --line: rgba(36, 48, 58, 0.16);
+  --block-a: #ff6b4a;
+  --block-b: #ffc93c;
+  --block-c: #14b8a6;
+  --block-roughness: 0.46;
+  --light-sky: #f7f9fb;
+  --light-ground: #d5dde4;
+  --shadow-color: rgba(36, 48, 58, 0.14);
+}
+
+html[data-theme="sand"] {
+  color-scheme: light;
+  --color-coral: #ff6b4a;
+  --color-sunflower: #ffc93c;
+  --color-teal: #14b8a6;
+  --color-ink: #10163f;
+  --color-ink-soft: #2e3660;
+  --color-cream: #efe4d2;
+  --color-band: #e4d6c0;
+  --color-paper: #f7f1e6;
+  --on-accent: #10163f;
+  --btn-bg: #10163f;
+  --btn-fg: #f7f1e6;
+  --btn-bg-hover: #1c2458;
+  --header-bg: rgba(239, 228, 210, 0.94);
+  --header-line: rgba(16, 22, 63, 0.12);
+  --field-border: rgba(16, 22, 63, 0.18);
+  --line: rgba(16, 22, 63, 0.16);
+  --block-a: #ff6b4a;
+  --block-b: #ffc93c;
+  --block-c: #14b8a6;
+  --block-roughness: 0.46;
+  --light-sky: #fff8ee;
+  --light-ground: #e4d3b8;
+  --shadow-color: rgba(16, 22, 63, 0.16);
+}
 
 html[data-theme="electric"] {
   color-scheme: dark;
@@ -93,6 +174,39 @@ html[data-theme="glow"] {
   --light-sky: #ff2bd6;
   --light-ground: #1a3cff;
   --shadow-color: rgba(255, 43, 214, 0.35);
+}
+
+html[data-theme="warm"] body {
+  background-color: #f3ebe0;
+  background-image:
+    radial-gradient(ellipse 70% 42% at 0% -8%, rgba(196, 98, 62, 0.16), transparent 52%),
+    radial-gradient(ellipse 52% 38% at 100% 0%, rgba(226, 176, 67, 0.2), transparent 48%),
+    radial-gradient(ellipse 42% 32% at 100% 100%, rgba(26, 154, 138, 0.12), transparent 46%);
+}
+
+html[data-theme="slate"] body {
+  background-color: #f4f6f8;
+  background-image:
+    radial-gradient(ellipse 68% 40% at 0% -10%, rgba(90, 122, 150, 0.12), transparent 54%),
+    radial-gradient(ellipse 46% 34% at 100% 0%, rgba(180, 196, 210, 0.35), transparent 50%);
+}
+
+html[data-theme="sand"] body {
+  background-color: #efe4d2;
+  background-image:
+    radial-gradient(ellipse 70% 42% at 0% -8%, rgba(255, 107, 74, 0.1), transparent 52%),
+    radial-gradient(ellipse 52% 36% at 100% 0%, rgba(210, 170, 90, 0.22), transparent 48%),
+    radial-gradient(ellipse 40% 30% at 100% 100%, rgba(20, 184, 166, 0.08), transparent 46%);
+}
+
+html[data-theme="sand"] h1,
+html[data-theme="sand"] h2,
+html[data-theme="sand"] h3 {
+  letter-spacing: -0.045em;
+}
+
+html[data-theme="sand"] body {
+  letter-spacing: -0.011em;
 }
 
 html[data-theme="electric"] body {
@@ -261,6 +375,9 @@ html[data-theme="glow"] .hero-visual {
 
 .theme-bar a:hover,
 html:not([data-theme]) .theme-bar a[data-theme-link=""],
+html[data-theme="warm"] .theme-bar a[data-theme-link="warm"],
+html[data-theme="slate"] .theme-bar a[data-theme-link="slate"],
+html[data-theme="sand"] .theme-bar a[data-theme-link="sand"],
 html[data-theme="electric"] .theme-bar a[data-theme-link="electric"],
 html[data-theme="swiss"] .theme-bar a[data-theme-link="swiss"],
 html[data-theme="glow"] .theme-bar a[data-theme-link="glow"] {

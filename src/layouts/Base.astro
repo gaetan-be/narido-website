@@ -46,7 +46,7 @@ const jsonLd = {
     <script is:inline>
       (function () {
         var theme = new URLSearchParams(location.search).get("theme");
-        if (theme === "electric" || theme === "swiss" || theme === "glow") {
+        if (theme === "warm" || theme === "slate" || theme === "sand" || theme === "electric" || theme === "swiss" || theme === "glow") {
           document.documentElement.dataset.theme = theme;
         }
         document.addEventListener("click", function (event) {
