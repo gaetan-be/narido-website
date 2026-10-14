@@ -3,69 +3,69 @@ import type { SiteCopy } from './types';
 export const en: SiteCopy = {
   meta: {
     lang: 'en',
-    title: 'Narido: tech lead for hire, from payments to AI',
+    title: 'Narido: tech lead, from payments to AI',
     description:
-      'Gaëtan Denaisse, a one-person IT company in Belgium. Tech lead for hire across payments, cloud, DevOps, delivery, and AI. More than 20 years, still hands-on.',
-    ogAlt: 'Narido. Tech lead for hire, from payments to AI. Gaëtan Denaisse, Belgium.',
+      'Narido is an IT company in Belgium. Technical leadership across payments, cloud, DevOps, delivery, and AI. More than 20 years, still hands-on.',
+    ogAlt: 'Narido. Tech lead, from payments to AI. Belgium.',
   },
   nav: {
     home: 'Narido, front page',
-    services: 'What I do',
+    services: 'Services',
     work: 'Work',
     background: 'Background',
     contact: 'Contact',
     menu: 'Menu',
     close: 'Close menu',
-    cta: 'Write to me',
+    cta: 'Get in touch',
     skip: 'Skip to content',
     landmark: 'On this page',
   },
   hero: {
-    eyebrow: 'Belgium · one-person company',
-    titleLead: 'Tech lead for hire,',
+    eyebrow: 'Belgium',
+    titleLead: 'Tech lead,',
     titleTail: 'from payments to AI.',
-    lede: 'I am Gaëtan. I have spent more than 20 years writing software and leading the people who write it. Most of that time went into payments, and into moving systems to the cloud without drama. I still do the work myself, including the AI work.',
-    primary: 'Write to me',
+    lede: 'Narido leads the technical work on products that have to hold up, from payments platforms through cloud moves and on to release. AI sits in that same work now.',
+    primary: 'Get in touch',
     secondary: 'See the work',
   },
   services: {
-    title: 'What I do',
+    title: 'Services',
     intro:
-      'I come in as a technical lead for a stretch of time. I stay close to the code. When I leave, the team can carry the work.',
+      'Narido joins a team for a stretch of work and stays close to the code. When the engagement ends, the team can carry it.',
     items: [
       {
         id: 'lead',
         index: '01',
         accent: 'coral',
         title: 'Tech lead / fractional CTO',
-        text: 'Some teams call this a fractional CTO. I hold the technical thread on a product: architecture, priorities, code review, and the decisions that are easy to postpone. When the team is blocked, I write the code.',
+        text: 'Some teams call this a fractional CTO. Narido holds the technical thread on a product: architecture, priorities, code review, and the decisions that are easy to postpone. When a team is blocked, Narido writes the code.',
       },
       {
         id: 'cloud',
         index: '02',
         accent: 'sunflower',
         title: 'Cloud & DevOps',
-        text: 'I move systems to the cloud and leave the pipelines and environments behind me. A release should be a command, not a ritual that depends on someone remembering the steps.',
+        text: 'Systems move to the cloud with the pipelines and environments left in place. A release should be a command, not a ritual that depends on someone remembering the steps.',
       },
       {
         id: 'ai',
         index: '03',
         accent: 'teal',
         title: 'AI adoption',
-        text: 'I put AI into a job the team already has. A report that used to take an afternoon. A first pass over a pile of documents. I set it up so a person can check the result before it goes out.',
+        text: 'AI goes into a job the team already has. A report that used to take an afternoon. A first pass over a pile of documents. A person can check the result before it goes out.',
       },
       {
         id: 'quality',
         index: '04',
         accent: 'ink',
         title: 'Quality & delivery',
-        text: 'I shorten the distance between a change and production. Fewer tests, aimed at the failures that actually hurt. Releases small enough that a problem is easy to find.',
+        text: 'The distance between a change and production gets shorter. Fewer tests, aimed at the failures that actually hurt. Releases small enough that a problem is easy to find.',
       },
     ],
   },
   work: {
-    title: "Things I've built",
-    intro: 'A few products from recent work. Ask if you want the story behind one of them.',
+    title: 'Selected work',
+    intro: 'Recent products. The detail behind any of them is available on request.',
     visit: 'Visit',
     newTab: 'opens in a new tab',
     projects: [
@@ -119,8 +119,7 @@ export const en: SiteCopy = {
   },
   background: {
     title: 'Background',
-    intro:
-      'More than 20 years of hands-on work. Narido is just me. I stay with a system until it holds.',
+    intro: 'More than 20 years of hands-on work. Narido stays with a system until it holds.',
     eras: [
       {
         id: 'payments',
@@ -144,7 +143,7 @@ export const en: SiteCopy = {
         id: 'quality',
         accent: 'coral',
         title: 'Quality engineering',
-        text: 'Checks placed where a bad release would actually be caught. I would rather have a few sharp tests than a board full of green.',
+        text: 'Checks placed where a bad release would actually be caught. A few sharp tests, rather than a board full of green.',
       },
       {
         id: 'delivery',
@@ -156,14 +155,14 @@ export const en: SiteCopy = {
         id: 'ai',
         accent: 'teal',
         title: 'AI adoption for teams',
-        text: 'The recent work. I add AI to products and to the way a team produces them. Same rule as the rest: someone can read the output and stand behind it.',
+        text: 'The recent work. AI added to products and to the way a team produces them. Same rule as the rest: someone can read the output and stand behind it.',
       },
     ],
   },
   contact: {
     title: 'Contact',
     intro:
-      'Tell me what you are trying to ship. A few sentences on the product, and where it is stuck, is enough.',
+      'Say what you are trying to ship. A few sentences on the product, and where it is stuck, is enough.',
     name: 'Name',
     emailLabel: 'Email',
     need: 'What do you need',
@@ -188,15 +187,14 @@ export const en: SiteCopy = {
     country: 'Belgium',
     countryLabel: 'Country',
     vatLabel: 'VAT',
+    vat: 'BE1010525808',
     addressLabel: 'Address',
-    vatTodo: 'TODO: Belgian VAT number',
-    addressTodo: 'TODO: address',
-    placeholderLabel: 'Placeholders, still to fill in',
+    address: 'TODO: address',
     email: 'hello@narido.eu',
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
   footer: {
-    positioning: 'Tech lead for hire, from payments to AI.',
+    positioning: 'Tech lead, from payments to AI.',
     rights: 'Gaëtan Denaisse',
   },
   notFound: {

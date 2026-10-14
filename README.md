@@ -1,6 +1,6 @@
 # Narido
 
-Website for Narido, Gaëtan Denaisse's one-person IT company in Belgium.
+Website for Narido, an IT company in Belgium.
 
 English copy lives in `src/i18n/en.ts`. French and Dutch can be added as new dictionaries and listed in `astro.config.mjs`.
 

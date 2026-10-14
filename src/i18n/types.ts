@@ -98,10 +98,9 @@ export interface SiteCopy {
     country: string;
     countryLabel: string;
     vatLabel: string;
+    vat: string;
     addressLabel: string;
-    vatTodo: string;
-    addressTodo: string;
-    placeholderLabel: string;
+    address: string;
     email: string;
     linkedinUrl: string;
   };

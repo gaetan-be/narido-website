@@ -201,14 +201,26 @@
 
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   .hero-pin {
-    height: 148vh;
+    height: 148svh;
   }
 
   .hero-sticky {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     box-sizing: border-box;
+    overflow: visible;
+  }
+}
+
+.hero-visual {
+  width: min(100%, 26rem);
+  overflow: visible;
+}
+
+@media (min-width: 1024px) {
+  .hero-visual {
+    width: min(100%, 32rem, calc(100svh - 11rem));
   }
 }
 

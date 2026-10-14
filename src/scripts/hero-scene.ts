@@ -1,4 +1,5 @@
 import {
+  Box3,
   CanvasTexture,
   CircleGeometry,
   DirectionalLight,
@@ -12,6 +13,7 @@ import {
   Scene,
   SRGBColorSpace,
   Timer,
+  Vector3,
   WebGLRenderer,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
@@ -93,9 +95,9 @@ export function mountHero(
   renderer.outputColorSpace = SRGBColorSpace;
 
   const scene = new Scene();
-  const camera = new PerspectiveCamera(28, 1, 0.1, 40);
-  camera.position.set(0.1, 0.2, 8);
-  camera.lookAt(0, -0.05, 0);
+  const camera = new PerspectiveCamera(30, 1, 0.1, 80);
+  camera.position.set(0, 0, 12);
+  camera.lookAt(0, 0, 0);
 
   scene.add(new HemisphereLight(0xfff8ef, 0xd9d0c3, 1.15));
   const key = new DirectionalLight(0xffffff, 1.7);
@@ -155,6 +157,61 @@ export function mountHero(
   let visible = true;
   let sized = false;
 
+  const bounds = new Box3();
+  const corner = new Vector3();
+
+  function applyPose(snap: number, elapsed: number): void {
+    const settled = MathUtils.clamp(snap, 0, 1);
+    const floatAmp = 1 - settled;
+    BLOCKS.forEach((spec, index) => {
+      const mesh = meshes[index];
+      if (!mesh) return;
+      mesh.position.set(
+        MathUtils.lerp(spec.spreadPos[0], spec.stackPos[0], snap),
+        MathUtils.lerp(spec.spreadPos[1], spec.stackPos[1], snap) +
+          Math.sin(elapsed * 0.9 + spec.phase) * 0.07 * floatAmp,
+        MathUtils.lerp(spec.spreadPos[2], spec.stackPos[2], snap),
+      );
+      mesh.rotation.set(
+        MathUtils.lerp(spec.spreadRot[0], 0, snap),
+        MathUtils.lerp(spec.spreadRot[1], 0, snap),
+        MathUtils.lerp(spec.spreadRot[2], 0, snap),
+      );
+    });
+  }
+
+  function spreadRadius(): number {
+    group.rotation.set(0, 0, 0);
+    applyPose(0, 0);
+    group.updateMatrixWorld(true);
+    let max = 0;
+    for (const mesh of meshes) {
+      bounds.setFromObject(mesh);
+      for (const x of [bounds.min.x, bounds.max.x]) {
+        for (const y of [bounds.min.y, bounds.max.y]) {
+          for (const z of [bounds.min.z, bounds.max.z]) {
+            corner.set(x, y, z);
+            max = Math.max(max, corner.length());
+          }
+        }
+      }
+    }
+    return max + 0.16;
+  }
+
+  function frameCamera(): void {
+    const radius = spreadRadius();
+    const vFov = MathUtils.degToRad(camera.fov);
+    const aspect = Math.max(camera.aspect || 1, 0.6);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+    const distance = Math.max(radius / Math.sin(vFov / 2), radius / Math.sin(hFov / 2)) * 1.22;
+    camera.position.set(0, 0, distance);
+    camera.near = Math.max(0.05, distance - radius * 4);
+    camera.far = distance + radius * 6;
+    camera.lookAt(0, 0, 0);
+    camera.updateProjectionMatrix();
+  }
+
   function resize(): boolean {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -162,7 +219,7 @@ export function mountHero(
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    frameCamera();
     sized = true;
     return true;
   }
@@ -181,20 +238,7 @@ export function mountHero(
     const elapsed = timer.getElapsed();
     const snap = easeOutBack(scrollProgress());
     const settled = MathUtils.clamp(snap, 0, 1);
-    const floatAmp = 1 - settled;
-
-    BLOCKS.forEach((spec, index) => {
-      const mesh = meshes[index];
-      if (!mesh) return;
-      mesh.position.x = MathUtils.lerp(spec.spreadPos[0], spec.stackPos[0], snap);
-      mesh.position.y =
-        MathUtils.lerp(spec.spreadPos[1], spec.stackPos[1], snap) +
-        Math.sin(elapsed * 0.9 + spec.phase) * 0.07 * floatAmp;
-      mesh.position.z = MathUtils.lerp(spec.spreadPos[2], spec.stackPos[2], snap);
-      mesh.rotation.x = MathUtils.lerp(spec.spreadRot[0], 0, snap);
-      mesh.rotation.y = MathUtils.lerp(spec.spreadRot[1], 0, snap);
-      mesh.rotation.z = MathUtils.lerp(spec.spreadRot[2], 0, snap);
-    });
+    applyPose(snap, elapsed);
 
     const tilt = 1 - settled * 0.7;
     const idle = Math.sin(elapsed * 0.28) * 0.1 * tilt;
