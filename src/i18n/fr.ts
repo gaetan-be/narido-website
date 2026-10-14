@@ -121,6 +121,12 @@ export const fr: SiteCopy = {
     intro: 'Plus de vingt ans de travail concret. Narido reste sur un système jusqu’à ce qu’il tienne.',
     eras: [
       {
+        id: 'ai',
+        accent: 'teal',
+        title: 'L’IA, appliquée.',
+        text: 'Des fonctions d’IA dans les produits, et des outils d’IA dans le travail quotidien des équipes de développement. C’est utile, relu par des personnes, et en production.',
+      },
+      {
         id: 'payments',
         accent: 'coral',
         title: 'Paiements et plateformes fintech',
@@ -149,12 +155,6 @@ export const fr: SiteCopy = {
         accent: 'sunflower',
         title: 'Livraison plus rapide',
         text: 'Des changements plus petits, un responsable nommé, et moins de temps entre « terminé » et « en ligne ».',
-      },
-      {
-        id: 'ai',
-        accent: 'teal',
-        title: 'Adoption de l’IA pour les équipes',
-        text: 'Le travail récent. L’IA ajoutée aux produits, et à la façon dont une équipe les produit. La même règle que pour le reste : quelqu’un peut lire le résultat et l’assumer.',
       },
     ],
   },

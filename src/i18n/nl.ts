@@ -121,6 +121,12 @@ export const nl: SiteCopy = {
     intro: 'Meer dan 20 jaar hands-on werk. Narido blijft bij een systeem tot het standhoudt.',
     eras: [
       {
+        id: 'ai',
+        accent: 'teal',
+        title: 'AI, toegepast.',
+        text: 'AI-functies in producten, en AI-tools in het dagelijkse werk van ontwikkelingsteams. Nuttig, door mensen nagekeken, en in productie.',
+      },
+      {
         id: 'payments',
         accent: 'coral',
         title: 'Betalingen en fintechplatformen',
@@ -149,12 +155,6 @@ export const nl: SiteCopy = {
         accent: 'sunflower',
         title: 'Snellere oplevering',
         text: 'Kleinere wijzigingen, een aangeduide verantwoordelijke, en minder tijd tussen klaar en live.',
-      },
-      {
-        id: 'ai',
-        accent: 'teal',
-        title: 'AI-adoptie voor teams',
-        text: 'Het recente werk. AI toegevoegd aan producten en aan de manier waarop een team ze maakt. Dezelfde regel als de rest: iemand moet de output kunnen lezen en erachter staan.',
       },
     ],
   },

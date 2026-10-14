@@ -121,6 +121,12 @@ export const en: SiteCopy = {
     intro: 'More than 20 years of hands-on work. Narido stays with a system until it holds.',
     eras: [
       {
+        id: 'ai',
+        accent: 'teal',
+        title: 'AI, applied.',
+        text: 'AI features in products, and AI tools in the daily work of development teams. Useful, checked by people, and in production.',
+      },
+      {
         id: 'payments',
         accent: 'coral',
         title: 'Payments and fintech platforms',
@@ -149,12 +155,6 @@ export const en: SiteCopy = {
         accent: 'sunflower',
         title: 'Faster delivery',
         text: 'Smaller changes, a named owner, and less time between done and live.',
-      },
-      {
-        id: 'ai',
-        accent: 'teal',
-        title: 'AI adoption for teams',
-        text: 'The recent work. AI added to products and to the way a team produces them. Same rule as the rest: someone can read the output and stand behind it.',
       },
     ],
   },
