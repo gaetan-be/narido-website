@@ -1,4 +1,6 @@
-export type Locale = 'en';
+export type Locale = 'en' | 'fr' | 'nl';
+
+export type HtmlLang = 'en' | 'fr-BE' | 'nl-BE';
 
 export type Accent = 'coral' | 'sunflower' | 'teal' | 'ink';
 
@@ -34,7 +36,8 @@ export interface NeedOption {
 
 export interface SiteCopy {
   meta: {
-    lang: Locale;
+    locale: Locale;
+    lang: HtmlLang;
     title: string;
     description: string;
     ogAlt: string;
@@ -50,6 +53,7 @@ export interface SiteCopy {
     cta: string;
     skip: string;
     landmark: string;
+    languages: string;
   };
   hero: {
     eyebrow: string;

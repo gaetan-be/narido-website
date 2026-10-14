@@ -1,0 +1,25 @@
+---
+import type { Locale } from "../i18n";
+import { getCopy } from "../i18n";
+import Base from "../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import Services from "./Services.astro";
+import Projects from "./Projects.astro";
+import Background from "./Background.astro";
+import Contact from "./Contact.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<Base copy={copy}>
+  <Hero copy={copy} />
+  <Services copy={copy} />
+  <Projects copy={copy} />
+  <Background copy={copy} />
+  <Contact copy={copy} />
+</Base>

@@ -1,5 +1,5 @@
 ---
-import type { SiteCopy } from "../i18n";
+import { homePath, type SiteCopy } from "../i18n";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -8,11 +8,12 @@ interface Props {
 
 const { copy } = Astro.props;
 const year = new Date().getFullYear();
+const home = homePath(copy.meta.locale);
 ---
 
 <footer class="border-t border-ink/10 py-10">
   <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-    <a href="/#top" class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
+    <a href={`${home}#top`} class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
       <Logo class="h-8 w-8" />
       <span class="font-display text-lg font-semibold tracking-tight">Narido</span>
     </a>

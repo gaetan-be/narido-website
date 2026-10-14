@@ -191,6 +191,34 @@
   transform: rotate(-45deg);
 }
 
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.lang-switch .contents {
+  display: contents;
+}
+
+.lang-switch a {
+  color: #3d3a63;
+}
+
+.lang-switch a[aria-current="page"] {
+  color: #1e1b4b;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.lang-switch a:hover {
+  color: #1e1b4b;
+}
+
 [data-nav][aria-current="location"] {
   color: #1e1b4b;
   text-decoration: underline;

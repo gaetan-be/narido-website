@@ -1,8 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getCopy } from "../i18n";
+import { getCopy, homePath } from "../i18n";
 
 const copy = getCopy("en");
+const home = homePath(copy.meta.locale);
 ---
 
 <Base copy={copy} title={`${copy.notFound.title} · Narido`}>
@@ -10,7 +11,7 @@ const copy = getCopy("en");
     <h1 class="text-5xl font-medium">{copy.notFound.title}</h1>
     <p class="mt-4 text-lg text-ink-soft">{copy.notFound.text}</p>
     <div class="mt-8">
-      <a class="btn btn-primary" href="/">{copy.notFound.cta}</a>
+      <a class="btn btn-primary" href={home}>{copy.notFound.cta}</a>
     </div>
   </section>
 </Base>

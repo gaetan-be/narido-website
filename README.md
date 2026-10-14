@@ -2,7 +2,7 @@
 
 Website for Narido, an IT company in Belgium.
 
-English copy lives in `src/i18n/en.ts`. French and Dutch can be added as new dictionaries and listed in `astro.config.mjs`.
+Copy lives in `src/i18n`. English is served at `/`, French at `/fr/`, Dutch at `/nl/`.
 
 ## Develop
 

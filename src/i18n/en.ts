@@ -2,6 +2,7 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
+    locale: 'en',
     lang: 'en',
     title: 'Narido: tech lead, from payments to AI',
     description:
@@ -19,6 +20,7 @@ export const en: SiteCopy = {
     cta: 'Get in touch',
     skip: 'Skip to content',
     landmark: 'On this page',
+    languages: 'Languages',
   },
   hero: {
     eyebrow: 'Belgium',
@@ -34,25 +36,25 @@ export const en: SiteCopy = {
       'Narido joins a team for a stretch of work and stays close to the code. When the engagement ends, the team can carry it.',
     items: [
       {
-        id: 'lead',
+        id: 'ai',
         index: '01',
+        accent: 'teal',
+        title: 'AI adoption for product and development teams',
+        text: 'AI inside your products, and inside the way your team builds them. We add features that make the product smarter and set up tools that make the team faster, with people reviewing every output.',
+      },
+      {
+        id: 'lead',
+        index: '02',
         accent: 'coral',
         title: 'Tech lead / fractional CTO',
         text: 'Some teams call this a fractional CTO. Narido holds the technical thread on a product: architecture, priorities, code review, and the decisions that are easy to postpone. When a team is blocked, Narido writes the code.',
       },
       {
         id: 'cloud',
-        index: '02',
+        index: '03',
         accent: 'sunflower',
         title: 'Cloud & DevOps',
         text: 'Systems move to the cloud with the pipelines and environments left in place. A release should be a command, not a ritual that depends on someone remembering the steps.',
-      },
-      {
-        id: 'ai',
-        index: '03',
-        accent: 'teal',
-        title: 'AI adoption',
-        text: 'AI goes into a job the team already has. A report that used to take an afternoon. A first pass over a pile of documents. A person can check the result before it goes out.',
       },
       {
         id: 'quality',
@@ -167,7 +169,7 @@ export const en: SiteCopy = {
     needs: [
       { value: 'Tech lead / fractional CTO', label: 'Tech lead / fractional CTO' },
       { value: 'Cloud & DevOps', label: 'Cloud & DevOps' },
-      { value: 'AI adoption', label: 'AI adoption' },
+      { value: 'AI adoption for product and development teams', label: 'AI adoption for product and development teams' },
       { value: 'Quality & delivery', label: 'Quality & delivery' },
       { value: 'Something else', label: 'Something else' },
     ],

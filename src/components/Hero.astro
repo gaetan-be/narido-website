@@ -1,11 +1,12 @@
 ---
-import type { SiteCopy } from "../i18n";
+import { homePath, type SiteCopy } from "../i18n";
 
 interface Props {
   copy: SiteCopy;
 }
 
 const { copy } = Astro.props;
+const home = homePath(copy.meta.locale);
 ---
 
 <section id="top" class="hero-pin">
@@ -23,8 +24,8 @@ const { copy } = Astro.props;
       </h1>
       <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-ink-soft">{copy.hero.lede}</p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn btn-primary" href="/#contact">{copy.hero.primary}</a>
-        <a class="btn btn-secondary" href="/#work">{copy.hero.secondary}</a>
+        <a class="btn btn-primary" href={`${home}#contact`}>{copy.hero.primary}</a>
+        <a class="btn btn-secondary" href={`${home}#work`}>{copy.hero.secondary}</a>
       </div>
     </div>
     <div

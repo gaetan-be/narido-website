@@ -6,9 +6,9 @@ More than 20 years of hands-on work, across payments and fintech, cloud migratio
 
 ## Services
 
+- AI adoption for product and development teams. AI inside the products, and inside the way a team builds them. Features that make the product smarter, and tools that make the team faster, with people reviewing every output.
 - Tech lead / fractional CTO. Architecture, priorities, code review, and the decisions that are easy to postpone. When a team is blocked, Narido writes the code.
 - Cloud & DevOps. Systems move to the cloud with the pipelines and environments left in place.
-- AI adoption. AI goes into a job the team already has, and a person can check the result before it goes out.
 - Quality & delivery. The distance between a change and production gets shorter, with releases small enough that a problem is easy to find.
 
 ## Selected work

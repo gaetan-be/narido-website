@@ -1,5 +1,5 @@
 ---
-import type { SiteCopy } from "../i18n";
+import { homePath, locales, type SiteCopy } from "../i18n";
 import Logo from "./Logo.astro";
 
 interface Props {
@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { copy } = Astro.props;
+const home = homePath(copy.meta.locale);
 const links = [
-  { href: "/#services", label: copy.nav.services },
-  { href: "/#work", label: copy.nav.work },
-  { href: "/#background", label: copy.nav.background },
-  { href: "/#contact", label: copy.nav.contact },
+  { href: `${home}#services`, label: copy.nav.services },
+  { href: `${home}#work`, label: copy.nav.work },
+  { href: `${home}#background`, label: copy.nav.background },
+  { href: `${home}#contact`, label: copy.nav.contact },
 ];
 ---
 
@@ -23,7 +24,7 @@ const links = [
   </div>
   <div class="header-bar" data-header-bar>
     <div class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-      <a href="/#top" class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
+      <a href={`${home}#top`} class="inline-flex items-center gap-2.5" aria-label={copy.nav.home}>
         <Logo />
         <span class="font-display text-xl font-semibold tracking-tight">Narido</span>
       </a>
@@ -36,8 +37,27 @@ const links = [
           ))
         }
       </nav>
-      <a class="btn btn-primary hidden md:inline-flex" href="/#contact">{copy.nav.cta}</a>
-      <button
+      <div class="flex items-center gap-3 sm:gap-4">
+        <nav class="lang-switch" aria-label={copy.nav.languages}>
+          {
+            locales.map((item, index) => (
+              <span class="contents">
+                {index > 0 && <span aria-hidden="true">/</span>}
+                <a
+                  href={item.href}
+                  hreflang={item.htmlLang}
+                  lang={item.htmlLang}
+                  data-lang-switch
+                  aria-current={item.locale === copy.meta.locale ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </span>
+            ))
+          }
+        </nav>
+        <a class="btn btn-primary hidden md:inline-flex" href={`${home}#contact`}>{copy.nav.cta}</a>
+        <button
         type="button"
         id="menu-button"
         class="menu-button inline-flex h-11 w-11 items-center justify-center rounded-full text-ink md:hidden"
@@ -52,7 +72,8 @@ const links = [
           <span></span>
           <span></span>
         </span>
-      </button>
+        </button>
+      </div>
     </div>
     <nav id="site-menu" class="menu-panel border-t border-ink/10" aria-label={copy.nav.landmark} hidden>
       {
@@ -62,7 +83,7 @@ const links = [
           </a>
         ))
       }
-      <a class="btn btn-primary mt-2 mb-2" href="/#contact">{copy.nav.cta}</a>
+      <a class="btn btn-primary mt-2 mb-2" href={`${home}#contact`}>{copy.nav.cta}</a>
     </nav>
   </div>
 </header>
@@ -84,6 +105,15 @@ const links = [
       menu.querySelector<HTMLElement>("a")?.focus();
     }
   }
+
+  document.querySelectorAll<HTMLAnchorElement>("[data-lang-switch]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const url = new URL(link.href);
+      link.href = `${url.pathname}${hash}`;
+    });
+  });
 
   button?.addEventListener("click", () => {
     setOpen(button.getAttribute("aria-expanded") !== "true");

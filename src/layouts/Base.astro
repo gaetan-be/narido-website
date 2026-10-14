@@ -5,7 +5,7 @@ import "@fontsource/inter/latin-600.css";
 import "@fontsource/space-grotesk/latin-500.css";
 import "@fontsource/space-grotesk/latin-600.css";
 import "../styles/global.css";
-import type { SiteCopy } from "../i18n";
+import { locales, type SiteCopy } from "../i18n";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -16,14 +16,17 @@ interface Props {
 }
 
 const { copy, title = copy.meta.title, description = copy.meta.description } = Astro.props;
+const localeMeta = locales.find((item) => item.locale === copy.meta.locale) ?? locales[0];
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageUrl = new URL(localeMeta.href, Astro.site);
 const ogImage = new URL("og.png", Astro.site);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Narido",
   legalName: copy.contact.company,
-  url: "https://narido.eu",
+  url: pageUrl.href,
+  inLanguage: copy.meta.lang,
   email: copy.contact.email,
   image: ogImage.href,
   description,
@@ -47,7 +50,11 @@ const jsonLd = {
     <meta name="author" content={copy.contact.company} />
     <meta name="theme-color" content="#FBF4EA" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href="https://narido.eu/" />
+    {
+      locales.map((item) => (
+        <link rel="alternate" hreflang={item.htmlLang} href={new URL(item.href, Astro.site)} />
+      ))
+    }
     <link rel="alternate" hreflang="x-default" href="https://narido.eu/" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -55,7 +62,12 @@ const jsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:alt" content={copy.meta.ogAlt} />
-    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale" content={localeMeta.ogLocale} />
+    {
+      locales
+        .filter((item) => item.locale !== copy.meta.locale)
+        .map((item) => <meta property="og:locale:alternate" content={item.ogLocale} />)
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
