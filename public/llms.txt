@@ -1,0 +1,29 @@
+# Narido SRL
+
+Narido SRL is an IT company in Ottignies-Louvain-la-Neuve, Belgium. It leads the technical work on products that have to hold up, from payments platforms through cloud moves and on to release. AI sits in that same work.
+
+More than 20 years of hands-on work, across payments and fintech, cloud migration, DevOps, quality engineering, delivery, and AI adoption.
+
+## Services
+
+- Tech lead / fractional CTO. Architecture, priorities, code review, and the decisions that are easy to postpone. When a team is blocked, Narido writes the code.
+- Cloud & DevOps. Systems move to the cloud with the pipelines and environments left in place.
+- AI adoption. AI goes into a job the team already has, and a person can check the result before it goes out.
+- Quality & delivery. The distance between a change and production gets shorter, with releases small enough that a problem is easy to find.
+
+## Selected work
+
+- Genius Formers Coach: https://www.geniusformers.com/en/coach
+  A coach sends a short questionnaire, adds a few keywords, and gets a full guidance report in about four minutes.
+- Genius Formers Team: https://www.geniusformers.com/en/team
+  After a group training, each participant gets a private space with an Enneagram report, an AI helper, and practice scenarios.
+- Health Detective: https://healthdetective.ai
+  An AI that assembles a patient's medical history from documents that arrive in pieces. Built for clinics in Europe.
+- Lumilaw: https://lumilaw.com
+  Development of custom Drupal modules.
+
+## Contact
+
+https://narido.eu/#contact
+
+Location: Ottignies-Louvain-la-Neuve, Belgium
