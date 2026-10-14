@@ -71,7 +71,6 @@ export const en: SiteCopy = {
     projects: [
       {
         id: 'genius-coach',
-        index: '01',
         accent: 'coral',
         title: 'Genius Formers Coach',
         href: 'https://www.geniusformers.com/en/coach',
@@ -83,7 +82,6 @@ export const en: SiteCopy = {
       },
       {
         id: 'genius-team',
-        index: '02',
         accent: 'sunflower',
         title: 'Genius Formers Team',
         href: 'https://www.geniusformers.com/en/team',
@@ -96,7 +94,6 @@ export const en: SiteCopy = {
       },
       {
         id: 'health-detective',
-        index: '03',
         accent: 'teal',
         title: 'Health Detective',
         href: 'https://healthdetective.ai',
@@ -108,7 +105,6 @@ export const en: SiteCopy = {
       },
       {
         id: 'lumilaw',
-        index: '04',
         accent: 'ink',
         title: 'Lumilaw',
         href: 'https://lumilaw.com',

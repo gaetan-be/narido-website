@@ -12,7 +12,6 @@ export interface Service {
 
 export interface Project {
   id: string;
-  index: string;
   accent: Accent;
   title: string;
   href: string;
