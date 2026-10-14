@@ -4,10 +4,10 @@ export const fr: SiteCopy = {
   meta: {
     locale: 'fr',
     lang: 'fr-BE',
-    title: 'Narido : Nous développons des logiciels sérieux, et nous y mettons l’IA au travail.',
+    title: 'Narido : Des logiciels robustes, des touches d’IA qui fonctionnent.',
     description:
       'Narido est une société informatique en Belgique. Direction technique pour les paiements, le cloud, le DevOps, la livraison et l’IA. Plus de vingt ans, toujours dans le code.',
-    ogAlt: 'Narido. Nous développons des logiciels sérieux, et nous y mettons l’IA au travail. Belgique.',
+    ogAlt: 'Narido. Des logiciels robustes, des touches d’IA qui fonctionnent. Belgique.',
   },
   nav: {
     home: 'Narido, page d’accueil',
@@ -24,8 +24,8 @@ export const fr: SiteCopy = {
   },
   hero: {
     eyebrow: 'Belgique',
-    titleLines: ['Nous développons des logiciels sérieux,', 'et nous y mettons l’IA au travail.'],
-    titleLinesCompact: ['Nous développons', 'des logiciels sérieux,', 'et nous y mettons', 'l’IA au travail.'],
+    titleLines: ['Des logiciels robustes,', 'des touches d’IA qui fonctionnent.'],
+    titleLinesCompact: ['Des logiciels robustes,', 'des touches d’IA', 'qui fonctionnent.'],
     lede: 'Narido mène le travail technique de produits qui doivent tenir la route, des plateformes de paiement au cloud, jusqu’à la mise en production. L’IA fait maintenant partie de ce même travail.',
     primary: 'Nous écrire',
     secondary: 'Voir les réalisations',
@@ -190,7 +190,7 @@ export const fr: SiteCopy = {
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
   footer: {
-    positioning: 'Nous développons des logiciels sérieux, et nous y mettons l’IA au travail.',
+    positioning: 'Des logiciels robustes, des touches d’IA qui fonctionnent.',
     rights: 'Narido',
   },
   notFound: {

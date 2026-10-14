@@ -4,10 +4,10 @@ export const nl: SiteCopy = {
   meta: {
     locale: 'nl',
     lang: 'nl-BE',
-    title: 'Narido: We bouwen serieuze software, en we zetten AI erin aan het werk.',
+    title: 'Narido: We bouwen degelijke software, en laten AI daarin echt werken.',
     description:
       'Narido is een IT-bedrijf in België. Technische leiding voor betalingen, cloud, DevOps, oplevering en AI. Meer dan 20 jaar, nog altijd hands-on.',
-    ogAlt: 'Narido. We bouwen serieuze software, en we zetten AI erin aan het werk. België.',
+    ogAlt: 'Narido. We bouwen degelijke software, en laten AI daarin echt werken. België.',
   },
   nav: {
     home: 'Narido, startpagina',
@@ -24,8 +24,8 @@ export const nl: SiteCopy = {
   },
   hero: {
     eyebrow: 'België',
-    titleLines: ['We bouwen serieuze software,', 'en we zetten AI erin aan het werk.'],
-    titleLinesCompact: ['We bouwen', 'serieuze software,', 'en we zetten AI', 'erin aan het werk.'],
+    titleLines: ['We bouwen degelijke software,', 'en laten AI daarin echt werken.'],
+    titleLinesCompact: ['We bouwen', 'degelijke software,', 'en laten AI', 'daarin echt werken.'],
     lede: 'Narido leidt het technische werk voor producten die moeten blijven draaien, van betalingsplatformen over de cloud tot de release. AI hoort daar intussen gewoon bij.',
     primary: 'Neem contact op',
     secondary: 'Bekijk het werk',
@@ -190,7 +190,7 @@ export const nl: SiteCopy = {
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
   footer: {
-    positioning: 'We bouwen serieuze software, en we zetten AI erin aan het werk.',
+    positioning: 'We bouwen degelijke software, en laten AI daarin echt werken.',
     rights: 'Narido',
   },
   notFound: {
