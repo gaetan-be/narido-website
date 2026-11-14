@@ -310,6 +310,48 @@
   transform: none;
 }
 
+.doc h1 {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 500;
+}
+
+.doc h2 {
+  margin-top: 2.5rem;
+  font-size: 1.65rem;
+  font-weight: 500;
+}
+
+.doc p,
+.doc ul {
+  margin-top: 0.9rem;
+}
+
+.doc ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.doc li + li {
+  margin-top: 0.45rem;
+}
+
+.doc a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.doc em {
+  color: var(--color-ink-soft);
+}
+
+.doc-note {
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

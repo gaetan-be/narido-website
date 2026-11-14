@@ -1,0 +1,69 @@
+---
+import type { Locale } from "../i18n";
+import Doc from "../layouts/Doc.astro";
+import { splatHref, type SplatKind } from "../splatduo/paths";
+import { renderSplatMarkdown } from "../splatduo/render";
+import { splatDescription, splatTitle, splatUi } from "../splatduo/ui";
+import privacyEn from "../splatduo/privacy.en.md?raw";
+import privacyFr from "../splatduo/privacy.fr.md?raw";
+import privacyNl from "../splatduo/privacy.nl.md?raw";
+import supportEn from "../splatduo/support.en.md?raw";
+import supportFr from "../splatduo/support.fr.md?raw";
+import supportNl from "../splatduo/support.nl.md?raw";
+
+interface Props {
+  locale: Locale;
+  kind: SplatKind;
+}
+
+const { locale, kind } = Astro.props;
+const ui = splatUi[locale];
+const sources: Record<Locale, { support: string; privacy: string }> = {
+  en: { support: supportEn, privacy: privacyEn },
+  fr: { support: supportFr, privacy: privacyFr },
+  nl: { support: supportNl, privacy: privacyNl },
+};
+const privacyHref = splatHref(locale, "privacy");
+const supportHref = splatHref(locale, "support");
+const html =
+  kind === "index"
+    ? ""
+    : renderSplatMarkdown(
+        sources[locale][kind],
+        kind === "support" ? privacyHref : undefined,
+        kind === "support" ? ui.privacyLabel : undefined,
+      );
+---
+
+<Doc locale={locale} kind={kind} title={splatTitle(locale, kind)} description={splatDescription(locale, kind)}>
+  <section class="mx-auto w-full max-w-6xl px-5 pt-32 pb-20 sm:px-8">
+    <article class="doc">
+      {
+        kind === "index" ? (
+          <>
+            <h1>SplatDuo</h1>
+            <p>{ui.indexIntro}</p>
+            <ul>
+              <li>
+                <a href={supportHref}>{ui.supportLabel}</a>
+              </li>
+              <li>
+                <a href={privacyHref}>{ui.privacyLabel}</a>
+              </li>
+            </ul>
+          </>
+        ) : (
+          <div set:html={html} />
+        )
+      }
+      {
+        kind === "privacy" && (
+          <p>
+            <a href={supportHref}>{ui.backToSupport}</a>
+          </p>
+        )
+      }
+      <p class="doc-note">{ui.publisher}</p>
+    </article>
+  </section>
+</Doc>

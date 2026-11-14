@@ -1,12 +1,13 @@
 ---
-import { homePath, locales, type SiteCopy } from "../i18n";
+import { homePath, locales, type Locale, type SiteCopy } from "../i18n";
 import Logo from "./Logo.astro";
 
 interface Props {
   copy: SiteCopy;
+  langHrefs?: Partial<Record<Locale, string>>;
 }
 
-const { copy } = Astro.props;
+const { copy, langHrefs } = Astro.props;
 const home = homePath(copy.meta.locale);
 const links = [
   { href: `${home}#services`, label: copy.nav.services },
@@ -44,7 +45,7 @@ const links = [
               <span class="contents">
                 {index > 0 && <span aria-hidden="true">/</span>}
                 <a
-                  href={item.href}
+                  href={langHrefs?.[item.locale] ?? item.href}
                   hreflang={item.htmlLang}
                   lang={item.htmlLang}
                   data-lang-switch

@@ -14,8 +14,20 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  redirects: {
+    '/splatduo': '/SplatDuo/',
+    '/splatduo/support': '/SplatDuo/support/',
+    '/splatduo/privacy': '/SplatDuo/privacy/',
+    '/fr/splatduo': '/fr/SplatDuo/',
+    '/fr/splatduo/support': '/fr/SplatDuo/support/',
+    '/fr/splatduo/privacy': '/fr/SplatDuo/privacy/',
+    '/nl/splatduo': '/nl/SplatDuo/',
+    '/nl/splatduo/support': '/nl/SplatDuo/support/',
+    '/nl/splatduo/privacy': '/nl/SplatDuo/privacy/',
+  },
   integrations: [
     sitemap({
+      filter: (page) => !/\/splatduo(\/|$)/i.test(page),
       i18n: {
         defaultLocale: 'en',
         locales: {

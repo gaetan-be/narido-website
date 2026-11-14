@@ -1,0 +1,77 @@
+---
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import "@fontsource/inter/latin-600.css";
+import "@fontsource/space-grotesk/latin-500.css";
+import "@fontsource/space-grotesk/latin-600.css";
+import "../styles/global.css";
+import { getCopy, locales, type Locale } from "../i18n";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { splatHref, type SplatKind } from "../splatduo/paths";
+
+interface Props {
+  locale: Locale;
+  kind: SplatKind;
+  title: string;
+  description: string;
+}
+
+const { locale, kind, title, description } = Astro.props;
+const copy = getCopy(locale);
+const localeMeta = locales.find((item) => item.locale === locale) ?? locales[0];
+const alternates = locales.map((item) => ({
+  ...item,
+  href: splatHref(item.locale, kind),
+}));
+const canonical = new URL(splatHref(locale, kind), Astro.site);
+const langHrefs = Object.fromEntries(alternates.map((item) => [item.locale, item.href])) as Partial<
+  Record<Locale, string>
+>;
+---
+
+<!doctype html>
+<html lang={copy.meta.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={copy.contact.company} />
+    <meta name="theme-color" content="#FBF4EA" />
+    <link rel="canonical" href={canonical} />
+    {
+      alternates.map((item) => (
+        <link rel="alternate" hreflang={item.htmlLang} href={new URL(item.href, Astro.site)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={new URL(splatHref("en", kind), Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={localeMeta.ogLocale} />
+    {
+      locales
+        .filter((item) => item.locale !== locale)
+        .map((item) => <meta property="og:locale:alternate" content={item.ogLocale} />)
+    }
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{copy.nav.skip}</a>
+    <Header copy={copy} langHrefs={langHrefs} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer copy={copy} />
+  </body>
+</html>
