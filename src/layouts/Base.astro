@@ -20,23 +20,34 @@ const localeMeta = locales.find((item) => item.locale === copy.meta.locale) ?? l
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const pageUrl = new URL(localeMeta.href, Astro.site);
 const ogImage = new URL("og.png", Astro.site);
+const areaTypes = ["City", "AdministrativeArea", "City", "Country"] as const;
+const logo = new URL("apple-touch-icon.png", Astro.site);
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["Organization", "ProfessionalService"],
   name: "Narido",
   legalName: copy.contact.company,
   url: pageUrl.href,
   inLanguage: copy.meta.lang,
   email: copy.contact.email,
   image: ogImage.href,
+  logo: {
+    "@type": "ImageObject",
+    url: logo.href,
+  },
   description,
   vatID: copy.contact.vat,
   address: {
     "@type": "PostalAddress",
     addressLocality: copy.contact.addressLocality,
+    addressRegion: copy.contact.addressRegion,
     addressCountry: "BE",
   },
-  areaServed: "BE",
+  areaServed: copy.contact.areaServed.map((name, index) => ({
+    "@type": areaTypes[index] ?? "Place",
+    name,
+  })),
+  sameAs: [copy.contact.linkedinUrl],
 };
 ---
 

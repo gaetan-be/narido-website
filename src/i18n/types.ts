@@ -83,6 +83,7 @@ export interface SiteCopy {
   contact: {
     title: string;
     intro: string;
+    place: string;
     name: string;
     emailLabel: string;
     need: string;
@@ -101,6 +102,8 @@ export interface SiteCopy {
     vat: string;
     address: string;
     addressLocality: string;
+    addressRegion: string;
+    areaServed: string[];
     email: string;
     linkedinUrl: string;
   };

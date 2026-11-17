@@ -4,9 +4,9 @@ export const fr: SiteCopy = {
   meta: {
     locale: 'fr',
     lang: 'fr-BE',
-    title: 'Narido : Des logiciels robustes, des touches d’IA qui fonctionnent.',
+    title: 'Narido · Développement logiciel et IA, Ottignies-Louvain-la-Neuve',
     description:
-      'Narido est une société informatique en Belgique. Direction technique pour les paiements, le cloud, le DevOps, la livraison et l’IA. Plus de vingt ans, toujours dans le code.',
+      'Narido mène le développement de logiciels robustes et met l’IA au travail, pour les entreprises d’Ottignies-Louvain-la-Neuve, du Brabant wallon, de Bruxelles et de toute la Belgique.',
     ogAlt: 'Narido. Des logiciels robustes, des touches d’IA qui fonctionnent. Belgique.',
   },
   nav: {
@@ -23,7 +23,7 @@ export const fr: SiteCopy = {
     languages: 'Langues',
   },
   hero: {
-    eyebrow: 'Belgique',
+    eyebrow: 'Ottignies-Louvain-la-Neuve · Brabant wallon',
     titleLines: ['Des logiciels robustes,', 'des touches d’IA qui fonctionnent.'],
     titleLinesCompact: ['Des logiciels robustes,', 'des touches d’IA', 'qui fonctionnent.'],
     lede: 'Narido mène le travail technique de produits qui doivent tenir la route, des plateformes de paiement au cloud, jusqu’à la mise en production. L’IA fait maintenant partie de ce même travail.',
@@ -162,6 +162,8 @@ export const fr: SiteCopy = {
     title: 'Contact',
     intro:
       'Dites ce que vous voulez mettre en production. Quelques phrases sur le produit, et sur ce qui bloque, suffisent.',
+    place:
+      'Basés à Ottignies-Louvain-la-Neuve, nous travaillons sur place dans le Brabant wallon et à Bruxelles, et à distance partout ailleurs.',
     name: 'Nom',
     emailLabel: 'E-mail',
     need: 'De quoi avez-vous besoin',
@@ -186,6 +188,8 @@ export const fr: SiteCopy = {
     vat: 'BE1010525808',
     address: 'Ottignies-Louvain-la-Neuve - Belgique',
     addressLocality: 'Ottignies-Louvain-la-Neuve',
+    addressRegion: 'Brabant wallon',
+    areaServed: ['Ottignies-Louvain-la-Neuve', 'Brabant wallon', 'Bruxelles', 'Belgique'],
     email: 'hello@narido.eu',
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },

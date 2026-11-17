@@ -1,6 +1,6 @@
 # Narido SRL
 
-Narido SRL is an IT company in Ottignies-Louvain-la-Neuve, Belgium. We build serious software, and we put AI to work in it.
+Narido SRL is an IT company in Ottignies-Louvain-la-Neuve, Belgium. We build serious software, and we put AI to work in it. Narido works on site in Ottignies-Louvain-la-Neuve, Walloon Brabant and Brussels, and remotely elsewhere.
 
 More than 20 years of hands-on work, across payments and fintech, cloud migration, DevOps, quality engineering, delivery, and AI adoption.
 
@@ -26,4 +26,4 @@ More than 20 years of hands-on work, across payments and fintech, cloud migratio
 
 https://narido.eu/#contact
 
-Location: Ottignies-Louvain-la-Neuve, Belgium
+Location: Ottignies-Louvain-la-Neuve, Walloon Brabant, Belgium. On site in Walloon Brabant and Brussels. Remote elsewhere.

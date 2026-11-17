@@ -4,9 +4,9 @@ export const en: SiteCopy = {
   meta: {
     locale: 'en',
     lang: 'en',
-    title: 'Narido: We build serious software, and we put AI to work in it.',
+    title: 'Narido · Software development and AI, Ottignies-Louvain-la-Neuve, Belgium',
     description:
-      'Narido is an IT company in Belgium. Technical leadership across payments, cloud, DevOps, delivery, and AI. More than 20 years, still hands-on.',
+      'Narido builds robust software and puts AI to work, for companies in Ottignies-Louvain-la-Neuve, Walloon Brabant, Brussels and across Belgium.',
     ogAlt: 'Narido. We build serious software, and we put AI to work in it. Belgium.',
   },
   nav: {
@@ -23,7 +23,7 @@ export const en: SiteCopy = {
     languages: 'Languages',
   },
   hero: {
-    eyebrow: 'Belgium',
+    eyebrow: 'Ottignies-Louvain-la-Neuve · Walloon Brabant',
     titleLines: ['We build serious software,', 'and we put AI to work in it.'],
     titleLinesCompact: ['We build', 'serious software,', 'and we put AI', 'to work in it.'],
     lede: 'Narido leads the technical work on products that have to hold up, from payments platforms through cloud moves and on to release. AI sits in that same work now.',
@@ -162,6 +162,8 @@ export const en: SiteCopy = {
     title: 'Contact',
     intro:
       'Say what you are trying to ship. A few sentences on the product, and where it is stuck, is enough.',
+    place:
+      'Based in Ottignies-Louvain-la-Neuve. We work on site in Walloon Brabant and Brussels, and remotely everywhere else.',
     name: 'Name',
     emailLabel: 'Email',
     need: 'What do you need',
@@ -186,6 +188,8 @@ export const en: SiteCopy = {
     vat: 'BE1010525808',
     address: 'Ottignies-Louvain-la-Neuve - Belgium',
     addressLocality: 'Ottignies-Louvain-la-Neuve',
+    addressRegion: 'Walloon Brabant',
+    areaServed: ['Ottignies-Louvain-la-Neuve', 'Walloon Brabant', 'Brussels', 'Belgium'],
     email: 'hello@narido.eu',
     linkedinUrl: 'https://linkedin.com/in/gaetandenaisse',
   },
